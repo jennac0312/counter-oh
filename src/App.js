@@ -1,23 +1,76 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+
 
 function App() {
+  // setting use state happens within component
+  // const [variableName, setVariableName] = useState(initial value)
+  const [count, setCount] = useState(0)
+  const [evenCount, setEvenCount] = useState(0) //starting at 1 bc 0 is technically even
+
+  // use state to conditionally render color
+  const [color, setColor] = useState('') // inital state can also be null apparently
+
+  //function to add count
+  const addOne = () => {
+    setCount(count + 1)
+
+    // count % 2 ===0 && setEvenCount(evenCount + 1)
+
+
+
+    if((count + 1) % 2 === 0){
+      setEvenCount(count + 1)
+      setColor('even')
+    } else {
+      setColor('odd')
+    }
+  }
+
+  const subtractOne = () => {
+    setCount(count - 1)
+
+    // count % 2 === 0 && setEvenCount(evenCount - 1)
+
+    if((count + 1) % 2 === 0 ){
+      setEvenCount(count - 1)
+      setColor('even')
+    } else {
+      setColor('odd')
+    }
+  }
+
+  // const double = () => {
+  //   setCount(count*2)
+  // }
+
+  // const halve = () => {
+  //   setCount(count/2)
+  // }
+
+  const reset = () => {
+    setCount(0)
+    setEvenCount(0)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>COUNTER</h1>
+        {/* display count */}
+      <h3>All Count: <p className={count % 2 === 0 && count != 0 ? 'even' : 'odd'}>{count}</p></h3>
+
+  {/* truthee one liner */}
+      {count % 2 === 0 && <p>This is an even number</p>}
+
+      <h4>Other Count Different Conditional Rendering: <p className={color}>{count}</p></h4>
+
+      <h3>Even: {evenCount}</h3>
+        {/* increment/ decrement count */}
+      <button onClick={addOne}>Add 1</button>
+      <button onClick={subtractOne}>Subtract 1</button>
+      {/* <button onClick={double}>Double</button>
+      <button onClick={halve}>Halve</button> */}
+      <button onClick={reset}>Reset</button>
     </div>
   );
 }

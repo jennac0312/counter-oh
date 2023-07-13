@@ -1,7 +1,7 @@
 import React from 'react'
 
 function Buttons({addOne, subtractOne, reset}) {
-    //
+    // destructuring... pulling necessary props from App.js
 
   return (
     <div>
@@ -22,3 +22,4 @@ const add = (num1, num2) => {
 // add(1,2)
 const arr = [1,2]
 add(...arr)
+//spread operator

@@ -1,6 +1,9 @@
 import './App.css';
 import { useState } from 'react';
 
+// components
+import Buttons from './components/Buttons';
+
 
 function App() {
   // setting use state happens within component
@@ -14,11 +17,7 @@ function App() {
   //function to add count
   const addOne = () => {
     setCount(count + 1)
-
     // count % 2 ===0 && setEvenCount(evenCount + 1)
-
-
-
     if((count + 1) % 2 === 0){
       setEvenCount(count + 1)
       setColor('even')
@@ -29,9 +28,7 @@ function App() {
 
   const subtractOne = () => {
     setCount(count - 1)
-
     // count % 2 === 0 && setEvenCount(evenCount - 1)
-
     if((count + 1) % 2 === 0 ){
       setEvenCount(count - 1)
       setColor('even')
@@ -39,14 +36,6 @@ function App() {
       setColor('odd')
     }
   }
-
-  // const double = () => {
-  //   setCount(count*2)
-  // }
-
-  // const halve = () => {
-  //   setCount(count/2)
-  // }
 
   const reset = () => {
     setCount(0)
@@ -65,14 +54,12 @@ function App() {
       <h4>Other Count Different Conditional Rendering: <p className={color}>{count}</p></h4>
 
       <h3>Even: {evenCount}</h3>
-        {/* increment/ decrement count */}
-      <button onClick={addOne}>Add 1</button>
-      <button onClick={subtractOne}>Subtract 1</button>
-      {/* <button onClick={double}>Double</button>
-      <button onClick={halve}>Halve</button> */}
-      <button onClick={reset}>Reset</button>
+
+      <Buttons addOne={addOne} subtractOne={subtractOne} reset={reset}/> {/* 'react element' */}
     </div>
   );
 }
 
 export default App;
+
+//if passing down too many things code needs reworked.. useContext or something like that lol

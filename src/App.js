@@ -7,7 +7,7 @@ import Buttons from './components/Buttons';
 
 function App() {
   // setting use state happens within component
-  // const [variableName, setVariableName] = useState(initial value)
+  // const [variableName, setVariableName] = useState(initial state)
   const [count, setCount] = useState(0)
   const [evenCount, setEvenCount] = useState(0) //starting at 1 bc 0 is technically even
 
@@ -36,6 +36,7 @@ function App() {
       setColor('odd')
     }
   }
+
 
   const reset = () => {
     setCount(0)
